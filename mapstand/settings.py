@@ -19,7 +19,15 @@
 #########################################################################
 
 # Django settings for the GeoNode project.
+import ast
 import os
+import re
+import sys
+from datetime import timedelta
+from distutils.util import strtobool
+
+#import dj_database_url
+
 # Load more settings from a file called local_settings.py if it exists
 try:
     from mapstand.local_settings import *
@@ -37,6 +45,15 @@ SITENAME = 'mapstand'
 # Defines the directory that contains the settings file as the LOCAL_ROOT
 # It is used for relative settings elsewhere.
 LOCAL_ROOT = os.path.abspath(os.path.dirname(__file__))
+
+# Setting debug to true makes Django serve static media and
+# present pretty error pages.
+DEBUG = strtobool(os.getenv('DEBUG', 'True'))
+
+# Set to True to load non-minified versions of (static) client dependencies
+# Requires to set-up Node and tools that are required for static development
+# otherwise it will raise errors for the missing non-minified dependencies
+DEBUG_STATIC = strtobool(os.getenv('DEBUG_STATIC', 'False'))
 
 WSGI_APPLICATION = "{}.wsgi.application".format(PROJECT_NAME)
 
@@ -57,7 +74,7 @@ PROXY_ALLOWED_HOSTS += ('nominatim.openstreetmap.org',)
 AUTH_IP_WHITELIST = []
 
 MANAGERS = ADMINS = os.getenv('ADMINS', [])
-TIME_ZONE = os.getenv('TIME_ZONE', "America/Chicago")
+TIME_ZONE = os.getenv('TIME_ZONE', "Europe/London")
 USE_TZ = True
 
 INSTALLED_APPS += (PROJECT_NAME,)
@@ -85,7 +102,9 @@ TEMPLATES[0]['DIRS'].insert(0, os.path.join(LOCAL_ROOT, "templates"))
 loaders = TEMPLATES[0]['OPTIONS'].get('loaders') or ['django.template.loaders.filesystem.Loader','django.template.loaders.app_directories.Loader']
 # loaders.insert(0, 'apptemplates.Loader')
 TEMPLATES[0]['OPTIONS']['loaders'] = loaders
+TEMPLATES[0]['OPTIONS']['debug'] = True
 TEMPLATES[0].pop('APP_DIRS', None)
+
 
 CLIENT_RESULTS_LIMIT = 20
 API_LIMIT_PER_PAGE = 1000
