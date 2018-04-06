@@ -229,7 +229,6 @@ LEAFLET_CONFIG = {
     'RESET_VIEW': False
 }
 
-
 # default map projection
 # Note: If set to EPSG:4326, then only EPSG:4326 basemaps will work.
 DEFAULT_MAP_CRS = "EPSG:3857"
@@ -290,28 +289,28 @@ MAP_BASELAYERS = [{
     "wrapDateLine": True,
     "fixed": True,
     "group":"background"
-# }, {
-#     "source": {"ptype": "gxp_olsource"},
-#     "type": "OpenLayers.Layer.XYZ",
-#     "title": "MapBox Satellite Streets",
-#     "args": ["MapBox Satellite Streets", "http://api.mapbox.com/styles/v1/mapbox/satellite-streets-v9/tiles/${z}/${x}/${y}?access_token="+MAPBOX_ACCESS_TOKEN],
-#     "name": "background",
-#     "attribution": "&copy; <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <a href='https://www.mapbox.com/feedback/' target='_blank'>Improve this map</a>",
-#     "visibility": False,
-#     "wrapDateLine": True,
-#     "fixed": True,
-#     "group":"background"
-# }, {
-#     "source": {"ptype": "gxp_olsource"},
-#     "type": "OpenLayers.Layer.XYZ",
-#     "title": "MapBox Streets",
-#     "args": ["MapBox Streets", "http://api.mapbox.com/styles/v1/mapbox/streets-v9/tiles/${z}/${x}/${y}?access_token="+MAPBOX_ACCESS_TOKEN],
-#     "name": "background",
-#     "attribution": "&copy; <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <a href='https://www.mapbox.com/feedback/' target='_blank'>Improve this map</a>",
-#     "visibility": False,
-#     "wrapDateLine": True,
-#     "fixed": True,
-#     "group":"background"
+}, {
+    "source": {"ptype": "gxp_olsource"},
+    "type": "OpenLayers.Layer.XYZ",
+    "title": "MapBox Satellite Streets",
+    "args": ["MapBox Satellite Streets", "http://api.mapbox.com/styles/v1/mapbox/satellite-streets-v9/tiles/${z}/${x}/${y}?access_token="+MAPBOX_ACCESS_TOKEN],
+    "name": "background",
+    "attribution": "&copy; <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <a href='https://www.mapbox.com/feedback/' target='_blank'>Improve this map</a>",
+    "visibility": False,
+    "wrapDateLine": True,
+    "fixed": True,
+    "group":"background"
+}, {
+    "source": {"ptype": "gxp_olsource"},
+    "type": "OpenLayers.Layer.XYZ",
+    "title": "MapBox Streets",
+    "args": ["MapBox Streets", "http://api.mapbox.com/styles/v1/mapbox/streets-v9/tiles/${z}/${x}/${y}?access_token="+MAPBOX_ACCESS_TOKEN],
+    "name": "background",
+    "attribution": "&copy; <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <a href='https://www.mapbox.com/feedback/' target='_blank'>Improve this map</a>",
+    "visibility": False,
+    "wrapDateLine": True,
+    "fixed": True,
+    "group":"background"
 }, {
     "source": {"ptype": "gxp_osmsource"},
     "type": "OpenLayers.Layer.OSM",
