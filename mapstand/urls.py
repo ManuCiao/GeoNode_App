@@ -24,7 +24,9 @@ from django.views.generic import TemplateView
 from geonode.urls import urlpatterns
 
 urlpatterns += (
-## include your urls here
+    url(r'^/?$',
+       TemplateView.as_view(template_name='site_index1.html'),
+       name='home1'),
 
 )
 

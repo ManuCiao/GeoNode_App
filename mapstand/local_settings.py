@@ -290,7 +290,7 @@ UPLOADER = {
 
 # default map projection
 # Note: If set to EPSG:4326, then only EPSG:4326 basemaps will work.
-DEFAULT_MAP_CRS = "EPSG:3857"
+DEFAULT_MAP_CRS = "EPSG:900913"
 
 # Where should newly created maps be focused?
 DEFAULT_MAP_CENTER = (0, 0)
@@ -298,18 +298,18 @@ DEFAULT_MAP_CENTER = (0, 0)
 # How tightly zoomed should newly created maps be?
 # 0 = entire world;
 # maximum zoom is between 12 and 15 (for Google Maps, coverage varies by area)
-DEFAULT_MAP_ZOOM = 0
+DEFAULT_MAP_ZOOM = 5
 
 # Default preview library
 # Default preview library
-# GEONODE_CLIENT_LAYER_PREVIEW_LIBRARY = 'geoext'  # DEPRECATED use HOOKSET instead
+GEONODE_CLIENT_LAYER_PREVIEW_LIBRARY = 'geoext'  # DEPRECATED use HOOKSET instead
 # GEONODE_CLIENT_HOOKSET = "geonode.client.hooksets.GeoExtHookSet"
 
 # To enable the REACT based Client enable those
 INSTALLED_APPS += ('geonode-client', )
-LAYER_PREVIEW_LIBRARY = 'react'
+# LAYER_PREVIEW_LIBRARY = 'react'
 # GEONODE_CLIENT_LAYER_PREVIEW_LIBRARY = 'react'  # DEPRECATED use HOOKSET instead
-# GEONODE_CLIENT_HOOKSET = "geonode.client.hooksets.ReactHookSet"
+GEONODE_CLIENT_HOOKSET = "geonode.client.hooksets.ReactHookSet"
 
 # To enable the Leaflet based Client enable those
 # GEONODE_CLIENT_LAYER_PREVIEW_LIBRARY = 'leaflet'  # DEPRECATED use HOOKSET instead
@@ -336,6 +336,16 @@ MAP_BASELAYERS = [{
     "visibility": False,
     "fixed": True,
     "group":"background"
+}, {
+    "source": {"ptype": "gxp_osmsource"},
+    "type": "OpenLayers.Layer.OSM",
+    "title": "OpenStreetMap",
+    "name": "mapnik",
+    "attribution": "&copy; <a href='http://osm.org/copyright'>OpenStreetMap</a> contributors",
+    "visibility": True,
+    "wrapDateLine": True,
+    "fixed": True,
+    "group": "background"
 }, {
     "source": {"ptype": "gxp_olsource"},
     "type": "OpenLayers.Layer.XYZ",
@@ -369,7 +379,7 @@ MAP_BASELAYERS = [{
     "wrapDateLine": True,
     "fixed": True,
     "group":"background"
-}, {
+},  {
     "source": {"ptype": "gxp_olsource"},
     "type": "OpenLayers.Layer.XYZ",
     "title": "MapBox Satellite Streets",
@@ -391,16 +401,6 @@ MAP_BASELAYERS = [{
     "wrapDateLine": True,
     "fixed": True,
     "group":"background"
-}, {
-    "source": {"ptype": "gxp_osmsource"},
-    "type": "OpenLayers.Layer.OSM",
-    "title": "OpenStreetMap",
-    "name": "mapnik",
-    "attribution": "&copy; <a href='http://osm.org/copyright'>OpenStreetMap</a> contributors",
-    "visibility": True,
-    "wrapDateLine": True,
-    "fixed": True,
-    "group": "background"
 }]
 
 if 'geonode.geoserver' in INSTALLED_APPS:
