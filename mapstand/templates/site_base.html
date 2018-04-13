@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 {% block extra_head %}
-      <link href="{{ STATIC_URL }}css/site_base.css" rel="stylesheet"/>
-{% endblock %}
+      <!-- <link rel="stylesheet" href="{{ STATIC_URL }}css/ol.css" /> -->
+      <!-- <link rel="stylesheet" href="{{ STATIC_URL }}css/site-base.css" /> -->
+      <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" /> -->
+{% endblock extra_head %}
+
+
 {% block extra_tab %}
 {% comment %}
 Add Tab for Third Party Apps
@@ -10,3 +14,9 @@ Add Tab for Third Party Apps
 </li>
 {% endcomment %}
 {% endblock %}
+
+{% block extra_script %}
+<!-- <script type="text/javascript" src="{{ STATIC_URL }}js/ol3_mapstand.js"></script> -->
+<!-- <script type="text/javascript" src="{{ STATIC_URL }}js/ol.js"></script> -->
+
+{% endblock extra_script %}

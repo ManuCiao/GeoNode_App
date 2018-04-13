@@ -324,7 +324,7 @@ ALT_OSM_BASEMAPS = os.environ.get('ALT_OSM_BASEMAPS', False)
 CARTODB_BASEMAPS = os.environ.get('CARTODB_BASEMAPS', False)
 STAMEN_BASEMAPS = os.environ.get('STAMEN_BASEMAPS', False)
 THUNDERFOREST_BASEMAPS = os.environ.get('THUNDERFOREST_BASEMAPS', False)
-MAPBOX_ACCESS_TOKEN = os.environ.get('MAPBOX_ACCESS_TOKEN', '<MAPBOX_ACCESS_TOKEN>')
+MAPBOX_ACCESS_TOKEN = os.environ.get('MAPBOX_ACCESS_TOKEN', 'pk.eyJ1IjoibW5zYWJhdGlubyIsImEiOiJjamZ5MnI0OTQxeHR5MnhxamdrMzNuY2x0In0.n-R13nSNDR9_lKx8jwhHWQ')
 BING_API_KEY = os.environ.get('BING_API_KEY', None)
 GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY', '<GOOGLE_API_KEY>')
 
@@ -334,6 +334,17 @@ MAP_BASELAYERS = [{
     "args": ["No background"],
     "name": "background",
     "visibility": False,
+    "fixed": True,
+    "group":"background"
+}, {
+    "source": {"ptype": "gxp_olsource"},
+    "type": "OpenLayers.Layer.XYZ",
+    "title": "MapBox Streets",
+    "args": ["Mapbox Light", "https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/${z}/${x}/${y}?access_token="+MAPBOX_ACCESS_TOKEN],
+    "name": "background",
+    "attribution": "&copy; <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <a href='https://www.mapbox.com/feedback/' target='_blank'>Improve this map</a>",
+    "visibility": False,
+    "wrapDateLine": True,
     "fixed": True,
     "group":"background"
 }, {
@@ -357,18 +368,20 @@ MAP_BASELAYERS = [{
     "visibility": False,
     "fixed": True,
     "group":"background"
-}, {
-    "source": {"ptype": "gxp_olsource"},
-    "type": "OpenLayers.Layer.XYZ",
-    "title": "UNESCO GEODATA",
-    "args": ["UNESCO GEODATA", "http://en.unesco.org/tiles/geodata/${z}/${x}/${y}.png"],
-    "name": "background",
-    "attribution": "&copy; UNESCO",
-    "visibility": False,
-    "wrapDateLine": True,
-    "fixed": True,
-    "group":"background"
-}, {
+}, 
+# {
+#     "source": {"ptype": "gxp_olsource"},
+#     "type": "OpenLayers.Layer.XYZ",
+#     "title": "UNESCO GEODATA",
+#     "args": ["UNESCO GEODATA", "http://en.unesco.org/tiles/geodata/${z}/${x}/${y}.png"],
+#     "name": "background",
+#     "attribution": "&copy; UNESCO",
+#     "visibility": False,
+#     "wrapDateLine": True,
+#     "fixed": True,
+#     "group":"background"
+# }, 
+{
     "source": {"ptype": "gxp_olsource"},
     "type": "OpenLayers.Layer.XYZ",
     "title": "Humanitarian OpenStreetMap",
@@ -382,8 +395,8 @@ MAP_BASELAYERS = [{
 },  {
     "source": {"ptype": "gxp_olsource"},
     "type": "OpenLayers.Layer.XYZ",
-    "title": "MapBox Satellite Streets",
-    "args": ["MapBox Satellite Streets", "http://api.mapbox.com/styles/v1/mapbox/satellite-streets-v9/tiles/${z}/${x}/${y}?access_token="+MAPBOX_ACCESS_TOKEN],
+    "title": "MapBox Dark",
+    "args": ["Mapbox Dark", "https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/256/${z}/${x}/${y}?access_token="+MAPBOX_ACCESS_TOKEN],
     "name": "background",
     "attribution": "&copy; <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <a href='https://www.mapbox.com/feedback/' target='_blank'>Improve this map</a>",
     "visibility": False,
@@ -391,6 +404,18 @@ MAP_BASELAYERS = [{
     "fixed": True,
     "group":"background"
 }, {
+    "source": {"ptype": "gxp_olsource"},
+    "type": "OpenLayers.Layer.XYZ",
+    "title": "MapBox Satellite Streets",
+    "args": ["MapBox Satellite Streets", "http://api.mapbox.com/styles/v1/mapbox/satellite-streets-v9/tiles/${z}/${x}/${y}?access_token="+MAPBOX_ACCESS_TOKEN],
+    "name": "background", 
+    "attribution": "&copy; <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <a href='https://www.mapbox.com/feedback/' target='_blank'>Improve this map</a>",
+    "visibility": False,
+    "wrapDateLine": True,
+    "fixed": True,
+    "group":"background"
+},
+ {
     "source": {"ptype": "gxp_olsource"},
     "type": "OpenLayers.Layer.XYZ",
     "title": "MapBox Streets",
@@ -402,6 +427,7 @@ MAP_BASELAYERS = [{
     "fixed": True,
     "group":"background"
 }]
+
 
 if 'geonode.geoserver' in INSTALLED_APPS:
     LOCAL_GEOSERVER = {
